@@ -76,14 +76,14 @@ Maintainer: Amjad Ali <aalistat1@gmail.com>
  X <- SMSA[names(SMSA)!="NOx"]
  Y <- SMSA[names(SMSA)=="NOx"]
 
- set.seed(55225)
+ set.seed(25)
  train.obs <- sample(1:n, 0.7*n, replace = FALSE)
  test.obs <- (1:n)[-train.obs]
  xtrain <- X[train.obs,]; ytrain <- Y[train.obs,];
  xtest <- X[test.obs,]; ytest <- Y[test.obs,]
 
- OkNNE.MODEL = OKNNE(xtrain, ytrain, xtest = xtrain, ytest = ytrain,
- k = 10, B = 5, q = trunc(sqrt(ncol(xtrain))), direction = "both",
+ OkNNE.MODEL = OKNNE(xtrain = xtrain, ytrain = ytrain, xtest = xtest, ytest
+ = ytest, k = 10, B = 5, q = trunc(sqrt(ncol(xtrain))), direction = "both",
  algorithm=c("kd_tree", "cover_tree", "CR", "brute"))
 
  OkNNE.MODEL
